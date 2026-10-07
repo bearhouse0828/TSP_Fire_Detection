@@ -3,3 +3,9 @@ numpy>=1.21.0
 matplotlib>=3.4.0
 seaborn>=0.11.0
 scikit-learn>=1.0.0
+scipy>=1.7.0
+cartopy>=0.20.0
+
+# Optional: only required by fire_detection_pipeline_tspulse_new.py (TSPulse blend).
+# torch>=2.0.0
+# granite-tsfm @ git+https://github.com/ibm-granite/granite-tsfm.git@v0.3.1

@@ -1,20 +1,26 @@
 # Reload and run the review + plotting pipeline for the three uploaded CSVs.
+# Usage: python review_events.py [events_dir]
+#   events_dir must contain events_out.csv, timeline_out.csv and (optionally) events_located.csv.
+#   Defaults to ./multi_output (output of fire_detection_pipeline.py).
+import sys
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from pathlib import Path
+
+base = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).resolve().parent / "multi_output"
+
 try:
     from caas_jupyter_tools import display_dataframe_to_user
 except Exception:
     def display_dataframe_to_user(title, df):
         # Fallback: save a preview CSV for manual inspection when caas_jupyter_tools is unavailable
-        preview_path = Path("/Users/jpeng/Downloads/fire_detection") / "_preview_review_head.csv"
+        preview_path = base / "_preview_review_head.csv"
         try:
             df.head(100).to_csv(preview_path, index=False)
         except Exception:
             pass
 
-base = Path("/Users/jpeng/Downloads/fire_detection")
 events = pd.read_csv(base / "events_out.csv", parse_dates=["t_start","t_end"])
 timeline = pd.read_csv(base / "timeline_out.csv", header=[0,1], index_col=0, parse_dates=True)
 loc_df = None

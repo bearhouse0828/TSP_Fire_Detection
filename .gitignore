@@ -11,3 +11,7 @@ __pycache__/
 
 # Accidental nested duplicate of the project (identical copy of Fire_detection/)
 Fire_detection/Fire_detection/
+
+# Runtime / debug outputs
+*.log
+_preview_review_head.csv
