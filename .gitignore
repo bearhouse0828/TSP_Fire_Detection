@@ -1,0 +1,13 @@
+# macOS / archive junk
+__MACOSX/
+.DS_Store
+
+# Office lock files
+~$*
+
+# Python
+__pycache__/
+*.pyc
+
+# Accidental nested duplicate of the project (identical copy of Fire_detection/)
+Fire_detection/Fire_detection/
